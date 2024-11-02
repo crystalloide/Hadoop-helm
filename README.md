@@ -1,9 +1,9 @@
 # Hadoop : installation lancement et utilisation dans gitpod
 
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/crystalloide/Hadoop-docker)
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/crystalloide/Hadoop-helm)
 
-## https://github.com/crystalloide/Hadoop-docker
+## https://github.com/crystalloide/Hadoop-helm
 
 ## https://gitpod.io/workspaces
 
