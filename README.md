@@ -170,7 +170,7 @@ localhost:50070/explorer.html#
 
 ## Etape 18 :
 
-#### On va sur l'UI Spark et on regard "Running Applications"
+#### On va sur l'UI Spark et on regarde "Running Applications"
 
 #### Navigateur web sur l'URL : 
 
