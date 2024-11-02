@@ -3,11 +3,11 @@
 
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/crystalloide/Hadoop-helm)
 
-## https://github.com/crystalloide/Hadoop-helm
+### https://github.com/crystalloide/Hadoop-helm
 
-## https://gitpod.io/workspaces
+### https://gitpod.io/workspaces
 
-## https://hub.docker.com/r/apache/hadoop
+### https://hub.docker.com/r/apache/hadoop
 
 
 # Apache Hadoop
@@ -26,7 +26,7 @@ fournissant ainsi un service hautement disponible au-dessus d'un cluster d'ordin
 
 dont chacun peut être sujet à des pannes.
 
-# Démarrage rapide
+## Démarrage rapide
 
 Un cluster Hadoop peut être créé en extrayant l'image Docker appropriée et en spécifiant les configurations requises.
 
@@ -46,15 +46,15 @@ cd Hadoop-helm
 ```
 
 
-Etape 1 :
+## Etape 1 :
 
     minikube start -- profile sparkhdfs --cpus 6 --memory 15360 --drive virtualbox --no-vtx-check
 
-Etape 2 : 
+## Etape 2 : 
 
     minikube ssh --profile sparkhdfs
 
-Etape 3 : 
+## Etape 3 : 
 
     docker pull gradiant/hdfs-datanode 
 
@@ -63,11 +63,11 @@ Etape 3 :
     docker pull bitnami/spark:3.3.1
 
 
-Etape 4 : 
+## Etape 4 : 
 
     kubectl appl -f https://github.com/crystalloide/Hadoop-helm/blob/main/spark-yaml/hdfs-configmap.yaml
 
-Etape 5 : 
+## Etape 5 : 
 
 ## Montage du répertoire "/dataset" :  le ":" sépare le point de montage local (c:\dataset ou /home/user/dataset) de celui en cible "/dataset":
 ## minikube mount --profile sparkhdfs /home/user/dataset:/dataset
@@ -78,96 +78,102 @@ Etape 5 :
     ls ~/
 
 
-Etape 6 : 
+## Etape 6 : 
 
     kubectl appl -f https://github.com/crystalloide/Hadoop-helm/blob/main/spark-yaml/sparkhdfs.yaml
 
-Etape 7 : 
+## Etape 7 : 
 
     minikube dashboard --profile sparkhdfs
     
-Etape 8 : 
+## Etape 8 : 
 
     kubectl port-forward svc/sparkhdfs-master-namenode 8080:8080 50070:50070
 
 
-Etape 9 : 
+## Etape 9 : 
 
-## Navigateur web sur l'URL : 
+#### Navigateur web sur l'URL : 
 
 127.0.0.1:53279/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/#/workloads
 
 
-Etape 10 :
+## Etape 10 :
 
-## Navigateur web sur l'URL : 
+#### Navigateur web sur l'URL : 
 
 localhost:50070/dfshealth.html#tab-datanode
 
 localhost:50070/dfshealth.html#tab-overview
 
-## On voit les deux datanodes notamment
+#### On voit les deux datanodes notamment
 
 
-Etape 11 :
+## Etape 11 :
 
-## Navigateur web sur l'URL : 
+#### Navigateur web sur l'URL : 
 
 localhost:8080
 
-## On voit l'UI Spark et l'état du cluster Spark
+#### On voit l'UI Spark et l'état du cluster Spark
 
-Etape 12 :
+## Etape 12 :
 
-## Sur la console Kubernetes, on va en mode console (SSH) sur le pod sparkhdfs-master-namenode-0  (= namenode HDFS)
-## Workloads > Pods > sparkhdfs-master-namenode-0 > Shell 
-## Prompt : "bash-4.4$" 
+#### Sur la console Kubernetes, on va en mode console (SSH) sur le pod sparkhdfs-master-namenode-0  (= namenode HDFS)
+
+#### Workloads > Pods > sparkhdfs-master-namenode-0 > Shell 
+
+#### Prompt : "bash-4.4$" 
 
     cd /dataset
 
-## les données sont déjà disponibles : "1987*"
+#### les données sont déjà disponibles : "1987*"
 
-Etape 13 :
+## Etape 13 :
 
-## on crée le répertoire cible dans HDFS : 
+#### on crée le répertoire cible dans HDFS : 
 
     hdfs dfs -mkdir /formation 
 
     hdfs dfs -ls /
 
-Etape 14 :
+## Etape 14 :
 
-## et on copie les données à traiter : 
+#### et on copie les données à traiter : 
 
     hdfs dfs -put /dataset/1987.csv /formation 
 
-Etape 15 :
+## Etape 15 :
 
-# Navigateur web sur l'URL : 
+#### Navigateur web sur l'URL : 
 localhost:50070/explorer.html#
 
-## On regarde le répertoire HDFS /formation et son contenu
+#### On regarde le répertoire HDFS /formation et son contenu
 
 
-Etape 16 :
+## Etape 16 :
 
-## Sur la console Kubernetes, on ouvre une nouvelle console (SSH) sur le pod sparkhdfs-master-namenode-0  (= namenode HDFS)
-## Workloads > Pods > sparkhdfs-master-namenode-0 > Shell 
-## Prompt : "I have no name!@sparkhdfs-master--namenode-0:/opt/bitnami/spark$" 
+#### Sur la console Kubernetes, on ouvre une nouvelle console (SSH) sur le pod sparkhdfs-master-namenode-0  (= namenode HDFS)
+
+#### Workloads > Pods > sparkhdfs-master-namenode-0 > Shell 
+
+#### Prompt : "I have no name!@sparkhdfs-master--namenode-0:/opt/bitnami/spark$" 
 
 
-Etape 17 :
+## Etape 17 :
 
-## Lancement d'un job spark : 
+#### Lancement d'un job spark : 
 
     bin/spark-submit --master spark://sparkhdfs-master-namenode-0.sparkhdfs-master-namenode.default.svc.cluster.local:7077 --num-executors 2 --total-executor-cores 1 --executor-memory 1g \
     --class test.spark.arrivalDelay2008 6  /dataset/sparkexample.jar sparkhdfs-master-namenode
 
 
-Etape 18 :
+## Etape 18 :
 
-## On va sur l'UI Spark et on regard "Running Applications"
-## Navigateur web sur l'URL : 
+#### On va sur l'UI Spark et on regard "Running Applications"
+
+#### Navigateur web sur l'URL : 
+
 localhost:8080
 
 
