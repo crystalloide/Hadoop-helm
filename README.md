@@ -107,7 +107,8 @@ cd Hadoop-helm
 
 ## Etape 6 : 
 
-    kubectl appl -f https://github.com/crystalloide/Hadoop-helm/blob/main/spark-yaml/sparkhdfs.yaml
+    kubectl apply -f ~/Hadoop-helm/spark-yaml/sparkhdfs.yaml
+
 
 ## Etape 7 : On va regarder le dashboard : 
 
