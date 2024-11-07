@@ -52,7 +52,7 @@ cd Hadoop-helm
 
 ## Etape 1 :
 
-    minikube start -- profile sparkhdfs --cpus 6 --memory 15360 --drive virtualbox --no-vtx-check
+    minikube start --profile sparkhdfs --cpus 6 --memory 15360 --driver virtualbox --no-vtx-check
 
 ## Etape 2 : 
 
