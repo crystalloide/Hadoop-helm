@@ -52,6 +52,12 @@ cd Hadoop-helm
 
 ## Etape 1 :
 
+   #### Si besoin : 
+   
+    minikube delete -p sparkhdfs  
+
+   #### On lance : 
+    
     minikube start --profile sparkhdfs --cpus 6 --memory 15360 --driver virtualbox --no-vtx-check
 
 ## Etape 2 : 
