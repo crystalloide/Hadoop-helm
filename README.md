@@ -39,6 +39,10 @@ Optionnel : si vous utilisez un environnement autre que Gitpod, on va d'abord cl
 
 ```bash
 
+cd ~
+ 
+rm -Rf ~/Hadoop-helm
+
 git clone https://github.com/crystalloide/Hadoop-helm
 
 cd Hadoop-helm
