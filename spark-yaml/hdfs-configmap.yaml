@@ -1,4 +1,5 @@
 apiVersion: v1
+kind: ConfigMap
 data:
   sparkmodeworker: worker
   sparkmodemaster: master
@@ -17,7 +18,6 @@ data:
      in this file. -->\n\n
      <configuration>\n\t<property>\n\t\t<name>dfs.replication</name>\n\t\t<value>3</value>\n\t</property>\n\t<property>\n\t\t<name>dfs.namenode.datanode.registration.ip-
      hostname-check</name>\n\t\t<value>false</value>\n\t</property>\n</configuration>\n"
-kind: ConfigMap
 metadata:
   creationTimestamp: null
   name: spark-hdfs-configmap
