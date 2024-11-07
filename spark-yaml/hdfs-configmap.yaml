@@ -5,7 +5,7 @@ data:
   namenodeurl: hdfs://sparkhdfs-master-namenode:8020
   namenodebindurl: hdfs://0.0.0.0:8020
   sparkmasterurl: spark://sparkhdfs-master-namenode:7077
-  hdfs-site.xml: 
+  hdfs-site.xml: |
     <?xml version="1.0" encoding="UTF-8"?>
     <?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
     <!--
